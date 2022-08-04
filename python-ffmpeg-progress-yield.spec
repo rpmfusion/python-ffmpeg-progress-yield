@@ -1,10 +1,10 @@
 # Created by pyp2rpm-3.3.7
 %global pypi_name ffmpeg-progress-yield
-%global pypi_version 0.2.0
+%global pypi_version 0.3.0
 
 Name:           python-%{pypi_name}
 Version:        %{pypi_version}
-Release:        2%{?dist}
+Release:        1%{?dist}
 Summary:        Run an ffmpeg command with progress
 
 License:        MIT
@@ -46,6 +46,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/ffmpeg_progress_yield-%{pypi_version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Aug 04 2022 Leigh Scott <leigh123linux@gmail.com> - 0.3.0-1
+- Update to 0.3.0
+
 * Sat Jun 25 2022 Robert-André Mauchin <zebob.m@gmail.com> - 0.2.0-2
 - Rebuilt for Python 3.11
 
