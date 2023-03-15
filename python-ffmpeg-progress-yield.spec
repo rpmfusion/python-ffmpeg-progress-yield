@@ -1,6 +1,6 @@
 # Created by pyp2rpm-3.3.7
 %global pypi_name ffmpeg-progress-yield
-%global pypi_version 0.7.0
+%global pypi_version 0.7.2
 
 Name:           python-%{pypi_name}
 Version:        %{pypi_version}
@@ -46,6 +46,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/ffmpeg_progress_yield-%{pypi_version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Mar 15 2023 Leigh Scott <leigh123linux@gmail.com> - 0.7.2-1
+- Update to 0.7.2
+
 * Fri Feb 10 2023 Leigh Scott <leigh123linux@gmail.com> - 0.7.0-1
 - Update to 0.7.0
 
