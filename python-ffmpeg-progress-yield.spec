@@ -4,7 +4,7 @@
 
 Name:           python-%{pypi_name}
 Version:        %{pypi_version}
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Run an ffmpeg command with progress
 
 License:        MIT
@@ -46,6 +46,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/ffmpeg_progress_yield-%{pypi_version}-py%{python3_version}.egg-info
 
 %changelog
+* Sat Jul 08 2023 Leigh Scott <leigh123linux@gmail.com> - 0.7.8-2
+- Rebuilt for Python 3.12
+
 * Sun Jul 02 2023 Leigh Scott <leigh123linux@gmail.com> - 0.7.8-1
 - Update to 0.7.8
 
