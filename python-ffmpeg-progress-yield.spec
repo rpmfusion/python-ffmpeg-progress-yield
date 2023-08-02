@@ -4,7 +4,7 @@
 
 Name:           python-%{pypi_name}
 Version:        %{pypi_version}
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Run an ffmpeg command with progress
 
 License:        MIT
@@ -46,6 +46,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/ffmpeg_progress_yield-%{pypi_version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Aug 02 2023 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 0.7.8-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
 * Sat Jul 08 2023 Leigh Scott <leigh123linux@gmail.com> - 0.7.8-2
 - Rebuilt for Python 3.12
 
