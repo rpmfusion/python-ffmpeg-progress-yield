@@ -1,10 +1,10 @@
 # Created by pyp2rpm-3.3.7
 %global pypi_name ffmpeg-progress-yield
-%global pypi_version 0.7.8
+%global pypi_version 0.7.9
 
 Name:           python-%{pypi_name}
 Version:        %{pypi_version}
-Release:        6%{?dist}
+Release:        1%{?dist}
 Summary:        Run an ffmpeg command with progress
 
 License:        MIT
@@ -46,6 +46,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/ffmpeg_progress_yield-%{pypi_version}-py%{python3_version}.egg-info
 
 %changelog
+* Sun Aug 18 2024 Leigh Scott <leigh123linux@gmail.com> - 0.7.9-1
+- Update to 0.7.9
+
 * Fri Aug 02 2024 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 0.7.8-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 
