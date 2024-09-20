@@ -1,9 +1,9 @@
 # Created by pyp2rpm-3.3.7
 %global pypi_name ffmpeg-progress-yield
-%global pypi_version 0.7.9
+%global pypi_version 0.9.1
 
 Name:           python-%{pypi_name}
-Version:        0.9.1
+Version:        %{pypi_version}
 Release:        1%{?dist}
 Summary:        Run an ffmpeg command with progress
 
