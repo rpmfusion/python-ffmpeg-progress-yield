@@ -3,7 +3,7 @@
 %global pypi_version 0.7.9
 
 Name:           python-%{pypi_name}
-Version:        %{pypi_version}
+Version:        0.9.1
 Release:        1%{?dist}
 Summary:        Run an ffmpeg command with progress
 
@@ -46,6 +46,9 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitelib}/ffmpeg_progress_yield-%{pypi_version}-py%{python3_version}.egg-info
 
 %changelog
+* Fri Sep 20 2024 Leigh Scott <leigh123linux@gmail.com> - 0.9.1-1
+- Update to 0.9.1
+
 * Sun Aug 18 2024 Leigh Scott <leigh123linux@gmail.com> - 0.7.9-1
 - Update to 0.7.9
 
