@@ -1,15 +1,14 @@
 # Created by pyp2rpm-3.3.7
 %global pypi_name ffmpeg-progress-yield
-%global pypi_version 0.11.3
 
 Name:           python-%{pypi_name}
-Version:        %{pypi_version}
+Version:        0.12.0
 Release:        1%{?dist}
 Summary:        Run an ffmpeg command with progress
 
 License:        MIT
 URL:            https://github.com/slhck/ffmpeg-progress-yield
-Source0:        %{url}/archive/v%{pypi_version}/%{pypi_name}-%{pypi_version}.tar.gz
+Source0:        %{url}/archive/v%{version}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
@@ -28,7 +27,7 @@ Run an ffmpeg command with its progress yielded.
 
 
 %prep
-%autosetup -n %{pypi_name}-%{pypi_version}
+%autosetup -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -43,9 +42,12 @@ rm -rf %{pypi_name}.egg-info
 %doc README.md
 %{_bindir}/ffmpeg-progress-yield
 %{python3_sitelib}/ffmpeg_progress_yield
-%{python3_sitelib}/ffmpeg_progress_yield-%{pypi_version}-py%{python3_version}.egg-info
+%{python3_sitelib}/ffmpeg_progress_yield-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Sat Mar 29 2025 Leigh Scott <leigh123linux@gmail.com> - 0.12.0-1
+- Update to 0.12.0
+
 * Sat Mar 08 2025 Leigh Scott <leigh123linux@gmail.com> - 0.11.3-1
 - Update to 0.11.3
 
