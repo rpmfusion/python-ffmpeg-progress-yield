@@ -1,33 +1,34 @@
-# Created by pyp2rpm-3.3.7
-%global pypi_name ffmpeg_progress_yield
-
 Name:           python-ffmpeg-progress-yield
-Version:        0.12.0
+Version:        1.0.1
 Release:        %autorelease
 Summary:        Run an ffmpeg command with progress
 
 License:        MIT
 URL:            https://github.com/slhck/ffmpeg-progress-yield
-Source0:        %{pypi_source}
+Source0:        %{url}/archive/refs/tags/v%{version}/ffmpeg-progress-yield-%{version}.tar.gz
+Patch0:         fix_test.patch
+
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
 # Nedded for tests
 BuildRequires:  ffmpeg
+BuildRequires:  procps-ng
 BuildRequires:  python3dist(pytest)
+BuildRequires:  python3dist(pytest-asyncio)
 
 %description
 Run an ffmpeg command with its progress yielded.
 
 %package -n     python3-ffmpeg-progress-yield
 Summary:        %{summary}
-%{?python_provide:%python_provide python3-ffmpeg-progress-yield}
+Recommends:     %{_bindir}/ffmpeg
 
 %description -n python3-ffmpeg-progress-yield
 Run an ffmpeg command with its progress yielded.
 
 %prep
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -p1 -n ffmpeg-progress-yield-%{version}
 
 %generate_buildrequires
 %pyproject_buildrequires
@@ -37,10 +38,10 @@ Run an ffmpeg command with its progress yielded.
 
 %install
 %pyproject_install
-%pyproject_save_files -l %{pypi_name}
+%pyproject_save_files -l ffmpeg_progress_yield
 
 %check
-%{python3} test/test.py
+pytest test/test.py
 
 %files -n python3-ffmpeg-progress-yield -f %{pyproject_files}
 %license LICENSE

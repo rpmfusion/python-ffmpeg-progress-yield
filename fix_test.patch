@@ -1,0 +1,71 @@
+diff --git a/test/test.py b/test/test.py
+index abcdef1..1234567 100755
+--- a/test/test.py
++++ b/test/test.py
+@@ -5,6 +5,7 @@ import sys
+ import time
+ 
+ import pytest
++from contextlib import aclosing
+ 
+ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "../"))
+ 
+@@ -248,12 +249,13 @@ class TestAsyncLibrary:
+     async def test_async_quit(self):
+         ff = FfmpegProgress(TestAsyncLibrary.cmd)
+         proc = None
+-        async for progress in ff.async_run_command_with_progress():
+-            print(f"{progress}/100")
+-            if progress > 0:
+-                proc = ff.process
+-                await ff.async_quit()
+-                break
++        async with aclosing(ff.async_run_command_with_progress()) as agen:
++            async for progress in agen:
++                print(f"{progress}/100")
++                if progress > 0:
++                    proc = ff.process
++                    await ff.async_quit()
++                    break
+         assert proc is not None
+         await proc.wait()
+         assert proc.returncode != 0
+@@ -262,12 +264,13 @@ class TestAsyncLibrary:
+     async def test_async_quit_gracefully(self):
+         ff = FfmpegProgress(TestAsyncLibrary.cmd)
+         proc = None
+-        async for progress in ff.async_run_command_with_progress():
+-            print(f"{progress}/100")
+-            if progress > 0 and ff.process is not None:
+-                proc = ff.process
+-                await ff.async_quit_gracefully()
+-                break
++        async with aclosing(ff.async_run_command_with_progress()) as agen:
++            async for progress in agen:
++                print(f"{progress}/100")
++                if progress > 0 and ff.process is not None:
++                    proc = ff.process
++                    await ff.async_quit_gracefully()
++                    break
+         assert proc is not None
+         assert proc.returncode == 0
+ 
+@@ -311,12 +314,13 @@ class TestAsyncLibrary:
+         """Test that async processes are cleaned up automatically when exceptions occur."""
+         initial_count = count_ffmpeg_processes()
+ 
++        ff = FfmpegProgress(TestAsyncLibrary.cmd)
+         try:
+-            ff = FfmpegProgress(TestAsyncLibrary.cmd)
+-            async for progress in ff.async_run_command_with_progress():
+-                print(f"{progress}/100")
+-                if progress > 0:
+-                    raise ValueError("Test exception")
++            async with aclosing(ff.async_run_command_with_progress()) as agen:
++                async for progress in agen:
++                    print(f"{progress}/100")
++                    if progress > 0:
++                        raise ValueError("Test exception")
+         except ValueError:
+             pass  # Expected exception
+ 
