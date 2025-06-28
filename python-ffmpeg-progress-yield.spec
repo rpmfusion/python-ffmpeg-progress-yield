@@ -41,7 +41,7 @@ Run an ffmpeg command with its progress yielded.
 %pyproject_save_files -l ffmpeg_progress_yield
 
 %check
-pytest test/test.py
+%{pytest} test/test.py
 
 %files -n python3-ffmpeg-progress-yield -f %{pyproject_files}
 %license LICENSE
