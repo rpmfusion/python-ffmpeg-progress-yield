@@ -1,12 +1,11 @@
 Name:           python-ffmpeg-progress-yield
-Version:        1.0.1
+Version:        1.1.2
 Release:        %autorelease
 Summary:        Run an ffmpeg command with progress
 
 License:        MIT
 URL:            https://github.com/slhck/ffmpeg-progress-yield
 Source0:        %{url}/archive/refs/tags/v%{version}/ffmpeg-progress-yield-%{version}.tar.gz
-Patch0:         fix_test.patch
 
 BuildArch:      noarch
 
@@ -41,10 +40,10 @@ Run an ffmpeg command with its progress yielded.
 %pyproject_save_files -l ffmpeg_progress_yield
 
 %check
-%{pytest} test/test.py
+%{pytest} tests/test_ffmpeg_progress.py
 
 %files -n python3-ffmpeg-progress-yield -f %{pyproject_files}
-%license LICENSE
+%license LICENSE.md
 %doc README.md
 %{_bindir}/ffmpeg-progress-yield
 
