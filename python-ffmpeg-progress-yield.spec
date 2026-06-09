@@ -1,5 +1,5 @@
 Name:           python-ffmpeg-progress-yield
-Version:        1.1.2
+Version:        1.1.3
 Release:        %autorelease
 Summary:        Run an ffmpeg command with progress
 
